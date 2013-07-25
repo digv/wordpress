@@ -225,7 +225,7 @@ function ty_comment_post($id){
 	$current_post = get_post($comment_post_id);
 	$scdata = get_user_meta($current_comment->user_id, 'scdata',true);
 	if($scdata){
-		if($_POST['post_2_sina_t']){
+		if($_POST['post_2_ty_t']){
 			if(!class_exists('SinaOAuth')){
 				include dirname(__FILE__).'/sinaOAuth.php';
 			}
@@ -295,7 +295,7 @@ function ty_options_do_page() {
 	<?php
 }
 
-function update_sina_t($status=null){
+function update_ty_t($status=null){
 	$tok = get_option('sina_access_token');
 	if(!class_exists('SinaOAuth')){
 		include dirname(__FILE__).'/sinaOAuth.php';
@@ -306,9 +306,9 @@ function update_sina_t($status=null){
 	$resp = $to->OAuthRequest('http://api.t.sina.com.cn/statuses/update.xml','POST',array('status'=>$status));
 }
 
-function upload_sina_t($status,$pic){
+function upload_ty_t($status,$pic){
 	if(!$pic) return;
-	$tok = get_option('sina_access_token');
+	$tok = get_option('ty_access_token');
 	if(!class_exists('SinaOAuth')){
 		include dirname(__FILE__).'/sinaOAuth.php';
 	}
@@ -321,12 +321,12 @@ function upload_sina_t($status,$pic){
 }
 
 
-add_action('publish_post', 'publish_post_2_sina_t', 0);
-function publish_post_2_sina_t($post_ID){
+add_action('publish_post', 'publish_post_2_ty_t', 0);
+function publish_post_2_ty_t($post_ID){
 	$tok = get_option('sina_access_token');
 	if(!$tok) return;
-	$sina_t = get_post_meta($post_ID, 'sina_t', true);
-	if($sina_t) return;
+	$ty_t = get_post_meta($post_ID, 'ty_t', true);
+	if($ty_t) return;
 	$c_post = get_post($post_ID);
 	//$status = $c_post->post_title.' '.get_permalink($post_ID);
 	
@@ -345,13 +345,13 @@ function publish_post_2_sina_t($post_ID){
 	$pic = get_post_first_image($c_post->post_content);
 	
 	if($pic){
-		upload_sina_t($status,$pic);
+		upload_ty_t($status,$pic);
 	}else{
-		update_sina_t($status);
+		update_ty_t($status);
 	}
 
-	update_sina_t($status);
-	add_post_meta($post_ID, 'sina_t', 'true', true);
+	update_ty_t($status);
+	add_post_meta($post_ID, 'ty_t', 'true', true);
 }
 
 if(!function_exists('get_post_first_image')){
