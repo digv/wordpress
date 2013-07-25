@@ -114,10 +114,10 @@ $keys = array();
 
 if ($token) {
         $_SESSION['token'] = $token;
-        setcookie( 'weibojs_'.$to->client_id, http_build_query($token) );
+        setcookie( 'weibojs_'.$to->app_id, http_build_query($token) );
 }
 
-	$c = new SaeTClientV2(  $sina_consumer_key, $sina_consumer_secret , $_SESSION['token']['access_token'] );
+	$c = new TYClientV2(  $sina_consumer_key, $sina_consumer_secret , $_SESSION['token']['access_token'] );
 //var_dump ($_SESSION['token']);	
 //var_dump (date('Y-m-d h:i:s', $_SESSION['token']['access_token']['expires_in']));
 	$uid_get = $c->get_uid();
