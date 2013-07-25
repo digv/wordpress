@@ -1,0 +1,120 @@
+/*
+
+Facade default color scheme.
+All tags that have a color attribute are located here.
+
+*/
+
+body {
+	background: #32383d;
+	color: #444;
+}
+
+#container {
+	background: #fff;
+}
+
+a:link, a:visited {
+	color: #fc5302;
+}
+
+a:hover {
+	color: #444;
+}
+
+#site-title a, #site-description, #header-widget-area, #header-widget-area a, footer, footer a:link, footer a:visited, .secondary-menu li a, #before-content, #before-content a {
+	color: #fff;  /* Header/Footer text color picker */
+}
+
+.sidebar-container .widget, footer .widget, .post, #comments, .one-third, hr {
+	border-top: 6px solid #dddddb; /* Borders/lines color picker */
+}
+
+.post-meta {
+	border-bottom: 6px solid #dddddb; /* Borders/lines color picker */
+}
+
+ol.commentlist li {
+	border-top: 1px solid #dddddb;
+}
+
+ol.commentlist {
+	border-bottom: 1px solid #dddddb;
+}
+
+.post-meta {
+	color: #999;
+}
+
+nav ul ul {
+	background-color: #32383d;
+}
+
+.primary-menu .menu li a {
+	color: #fff;
+}
+
+#header-container a:hover, .secondary-menu a:hover, #before-content a:hover, footer a:hover {
+	color: #fc5302; /* Header/footer link hover */
+}
+
+.secondary-menu {
+	background-color: #333;
+	background-color: rgba(0,0,0,.2);
+}
+
+textarea, input[type="text"], input[type="email"] {
+	background: #eee;
+	border: none;
+}
+
+blockquote {
+	border-left: 3px solid #eee;
+	border-left: 3px solid rgba(212,212,212,.3);
+	background: #fafafa;
+	background: rgba(212,212,212,.1);
+}
+
+.pc-flush {
+	background: #eee;
+}
+
+.testimonial img {
+	border: 2px solid #eee;
+}
+
+/* Twitter Widget */
+
+#container .twtr-widget .twtr-doc, #container .twtr-widget .twtr-hd a, #container .twtr-widget h3, #container .twtr-widget h4 {
+	color: #000 !important;
+}
+
+#footer-widget-area .twtr-widget .twtr-bd p {
+	color: #fff !important;
+}
+
+#body-container .twtr-widget .twtr-tweet a {
+	color: #fc5302 !important;
+}
+
+#body-container .twtr-widget .twtr-doc, #body-container .twtr-widget .twtr-hd a, #body-container .twtr-widget h3, #body-container .twtr-widget h4, #body-container .twtr-widget .twtr-tweet  {
+	background-color: transparent !important;
+}
+
+
+/* Buttons */
+
+.defaultbtn, .btn, #searchsubmit, #submit, .submit, .more-link, input[type="submit"] {
+   background-color: #fc5302;
+   color: #fff;
+   text-decoration: none;
+   vertical-align: middle;
+}
+.defaultbtn:hover, .btn:hover, #searchsubmit:hover, #submit:hover, .submit:hover, input[type="submit"]:hover {
+   background-color: #fa7b3f;
+   color: #fff !important;
+}
+.defaultbtn:active, .btn:active, .defaultbtn:active, #searchsubmit:active, #submit:active, .submit:active, .more-link:active, input[type="submit"]:active {
+   background: #fc5302;
+   color: #fff;
+}

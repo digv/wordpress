@@ -1,0 +1,118 @@
+/*
+
+Facade blue color scheme.
+All tags that have a color attribute are located here.
+
+*/
+
+body {
+	background: #e0e0e0;
+	color: #444;
+}
+
+#container {
+	background: #fff;
+}
+
+a:link, a:visited {
+	color: #1f7eaf;
+}
+
+a:hover {
+	color: #319dd4;
+}
+
+#site-description, #header-widget-area, footer, #before-content {
+	color: #444;  /* Header/Footer text color picker */
+}
+
+h1, h2, h3, h4, .entry-title, .widget-title, .page-title {
+	color: #1f7eaf;	
+}
+
+.sidebar-container .widget, footer .widget, .post, #comments, .one-third, hr {
+	border-top: 6px solid #dddddb; /* Borders/lines color picker */
+}
+
+.post-meta {
+	border-bottom: 6px solid #dddddb; /* Borders/lines color picker */
+}
+
+ol.commentlist li {
+	border-top: 1px solid #dddddb;
+}
+
+ol.commentlist {
+	border-bottom: 1px solid #dddddb;
+}
+
+.post-meta {
+	color: #999;
+}
+
+nav ul ul {
+	background-color: #eee;
+}
+
+.primary-menu .menu li a, #site-title a, #before-content a, #before-content .slide-name, #header-widget-area a, footer a:link, footer a:visited, .secondary-menu li a {
+	color: #1f7eaf; /* Header/footer link color */
+}
+
+#header-container a:hover, .secondary-menu a:hover, #before-content a:hover, footer a:hover {
+	color: #319dd4; /* Header/footer link hover */
+}
+
+.secondary-menu {
+	background-color: rgba(255,255,255,.4);
+}
+
+textarea, input[type="text"], input[type="email"] {
+	background: #eee;
+	border: none;
+}
+
+blockquote {
+	border-left: 3px solid #eee;
+	border-left: 3px solid rgba(212,212,212,.3);
+	background: #fafafa;
+	background: rgba(212,212,212,.1);
+}
+
+.pc-flush {
+	background: #eee;
+}
+
+.testimonial img {
+	border: 2px solid #eee;
+}
+
+/* Twitter Widget */
+
+#body-container .twtr-widget .twtr-doc, #body-container .twtr-widget .twtr-hd a, #body-container .twtr-widget h3, #body-container .twtr-widget h4 {
+	color: #000 !important;
+}
+
+#body-container .twtr-widget .twtr-tweet a {
+	color: #1f7eaf !important;
+}
+
+#body-container .twtr-widget .twtr-doc, #body-container .twtr-widget .twtr-hd a, #body-container .twtr-widget h3, #body-container .twtr-widget h4, #body-container .twtr-widget .twtr-tweet  {
+	background-color: transparent !important;
+}
+
+/* Buttons */
+
+.defaultbtn, .btn, #searchsubmit, #submit, .submit, .more-link, input[type="submit"] {
+   background-color: #1f7eaf;
+   color: #fff;
+   text-decoration: none;
+   vertical-align: middle;
+}
+.defaultbtn:hover, .btn:hover, #searchsubmit:hover, #submit:hover, .submit:hover, .more-link:hover, input[type="submit"]:hover {
+   background-color: #319dd4;
+   color: #fff !important;
+}
+.defaultbtn:active, .btn:active, .defaultbtn:active, #searchsubmit:active, #submit:active, .submit:active, .more-link:active, input[type="submit"]:active {
+   background: #1f7eaf;
+   color: #fff;
+}

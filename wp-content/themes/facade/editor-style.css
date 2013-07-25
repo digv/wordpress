@@ -1,0 +1,640 @@
+/*
+Theme editor stylesheet.
+
+The Facade theme was designed and created by Scott Bolinger, and David Gwyer.
+Please visit www.presscoders.com for more great WordPress themes and Plugins!
+
+*/
+
+/* Only styles that apply to post/page content are included from style.css
+-------------------------------------------------------------- */
+
+* {
+font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 300;
+line-height: 1.625;
+}
+
+.alignleft {
+float: left;
+margin: 0 20px 10px 0;
+}
+
+.alignright {
+float: right;
+margin: 0 0 10px 20px;
+}
+
+.aligncenter {
+display: block;
+margin: 0 auto;
+}
+
+.clear {
+clear: both;
+}
+
+
+/*** Typography ***/
+
+
+h1, h2, h3, h4 {
+margin: 0 0 15px 0;
+padding: 0;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: bold;
+}
+
+h1 {
+font-size: 26px;
+line-height: 32px;
+}
+
+h2 {
+font-size: 22px;
+line-height: 28px;
+}
+
+h3 {
+font-size: 18px;
+}
+
+h4 {
+font-size: 14px;
+}
+
+a:link, a:visited {
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+em {font-style: italic;}
+
+blockquote {
+font-style: italic;
+overflow: hidden;
+}
+
+blockquote {
+padding-left: 15px;
+margin: 0;
+font-family: "Palatino Linotype", Palatino, Georgia, serif;
+border-left: 3px solid #ccc;
+background: #fafafa;
+}
+
+.line {
+clear: both;
+height: 1px;
+padding-top: 10px;
+margin-bottom: 10px;
+border-top: 1px dotted #eee;
+}
+
+/*** Tables ***/
+
+
+th,td {
+padding: 8px;
+}
+
+th {
+font-weight:bold;
+text-align:center;
+text-transform: uppercase;
+}
+
+p,fieldset,table {margin-bottom: 15px;}
+
+
+/*** Lists ***/
+
+ol {
+list-style: decimal;
+}
+ol li {
+list-style: decimal;
+}
+ol ol {
+list-style: upper-alpha;
+}
+ol ol ol {
+list-style: lower-roman;
+}
+ol ol ol ol {
+list-style: lower-alpha;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+margin-bottom: 0 !important;
+}
+
+ul ul li, ul ul ul li {
+border-bottom: none !important;
+}
+
+ul {
+margin: 0 0 18px 1.2em;
+list-style: disc;
+padding: 0;
+}
+
+
+/*** Boxes ***/
+
+.box {
+padding: 15px;
+margin: 15px 0;
+display: block;
+overflow: hidden;
+}
+
+.note, .warning, .alert, .error, .download {
+font-size: 13px;
+clear: both;
+margin: 10px 0;
+padding: 10px;
+overflow: hidden;
+}
+
+/*** Images ***/
+
+
+img {
+max-width: 100%;
+height: auto;
+}
+
+.post img {
+margin-bottom: 9px;
+}
+
+.post .post-thumb {
+margin-bottom: 10px;
+overflow: hidden;
+}
+
+.post .post-thumb img {
+margin: 0;
+display: block;
+}
+
+p.wp-caption-text {
+margin-bottom: 8px;
+text-align: center;
+font-size: 12px;
+}
+
+.gallery img {
+margin: 10px;
+}
+
+.gallery .gallery-caption {
+font-size: 12px;
+}
+
+.icon {
+margin: 0 10px 0 0;
+position: relative;
+top: 10px;
+}
+
+.gallery {
+clear: both;
+}
+
+
+/* Layouts
+-------------------------------------------------------------- */
+
+
+/*** Right/Left Sidebar ***/
+
+.right {
+float: right;
+}
+
+.left {
+float: left;
+}
+
+/*** Columns ***/
+
+.twocollt {
+float: left;
+display: block;
+width: 48%;
+margin: 0 15px 5px 0;
+}
+
+.twocolrt {
+display: block;
+margin: 0 0 5px 0;
+width: 48%;
+float: right;
+}
+
+.threecollt {
+float: left;
+display: block;
+width: 32%;
+margin: 0 12px 5px 0;
+}
+
+.threecolmid {
+display: block;
+float: left;
+width: 32%;
+margin: 0 12px 5px 0;
+}
+
+.threecolrt {
+display: block;
+margin: 0 0 5px 0;
+width: 32%;
+float: right;
+}
+
+.one-col .content .threecollt {
+margin-right: 20px;
+}
+
+/*** Column Shortcodes ***/
+
+.one-half, .one-third, .two-thirds, .three-fourths, .one-fourth {
+float:left;
+margin-bottom:20px;
+margin-right:4%;
+position:relative;
+}
+
+.one-half {
+width: 48%;
+}
+
+.one-third {
+width: 30.66%;
+}
+
+.two-thirds {
+width: 65.33%;
+}
+
+.one-fourth {
+width: 22%;
+}
+
+.three-fourths {
+width: 74%;
+}
+
+.last-col {
+clear:right;
+margin-right:0;
+}
+
+/* Posts
+-------------------------------------------------------------- */
+
+.post {
+clear: both;
+overflow: hidden;
+margin-bottom: 15px;
+}
+
+
+/*** Titles ***/
+
+.entry-title {
+margin: 0 0 12px 0;
+padding: 2px 0 0 0;
+font-weight: bold;
+font-size: 26px;
+line-height: 30px;
+text-transform: uppercase;
+}
+
+.page-title {
+padding: 10px;
+clear: both;
+margin: 0 0 15px 0;
+font-weight: bold;
+font-size: 26px;
+line-height: 30px;
+text-transform: uppercase;
+}
+
+.entry-title a:hover, .page-title a:hover {
+text-decoration: none;
+}
+
+.widget-title {
+font-size: 18px;
+line-height: 24px;
+padding-bottom: 10px;
+text-transform: uppercase;
+}
+
+
+/*** Testimonials Widget/Shortcode ***/
+
+.testimonial {
+overflow: hidden;
+padding: 2px;
+margin: 15px 0;
+}
+
+.pc_testimonial_widget .testimonial {
+padding: 0;
+}
+
+.testimonial-name, .testimonial-company {
+margin: 0 0 3px 0;
+clear: left;
+font-weight: bold;
+font-size: 12px;
+font-style: italic;
+}
+
+.testimonial-name {
+margin-top: 10px;
+}
+
+.testimonial-meta {
+width: 20%;
+text-align: center;
+overflow: hidden;
+}
+
+.footer-widget-container .testimonial-meta, .sidebar-container .testimonial-meta {
+width: 99%;
+clear: both;
+padding-top: 15px;
+}
+
+.testimonial-meta img {
+width: 50px;
+height: 50px;
+float: none;
+margin: 0 auto;
+display: block;
+}
+
+.quote {
+background: #fff;
+display: block;
+margin: 0;
+float: right;
+width: 70%;
+padding: 15px;
+position: relative;
+}
+
+.quote:before {
+content: "";
+width: 0;
+height: 0;
+border-top: 15px solid transparent;
+border-bottom: 15px solid transparent; 
+border-right:15px solid #fff;
+position: absolute;
+left: -15px;
+}
+
+/* Consolidated Effects
+-------------------------------------------------------------- */
+
+.box, .facade_opt_in_widget, .quote {
+-moz-box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+-webkit-box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+#container, header, footer {
+-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/*** Buttons ***/
+
+.defaultbtn, .button, .btn, #searchsubmit, #submit, .submit, .post-edit-link, .more-link, input[type="submit"], input[type="text"], textarea, .box, .quote, .facade_opt_in_widget {
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+.defaultbtn, .button, .btn, #searchsubmit, #submit, .submit, .post-edit-link, .more-link, input[type="submit"] {
+background: url(images/trans-grad.png) repeat-x bottom;
+font-weight: bold;
+padding: 0.5em 1.5em;
+}
+
+.big {
+font-size: 18px;
+}
+
+.defaultbtn:hover, .button:hover, .btn:hover, #searchsubmit:hover, #submit:hover, .submit:hover, .post-edit-link:hover, .more-link:hover, input[type="submit"]:hover, nav li a:hover {
+-webkit-transition:
+color .15s linear,
+background-color .15s linear;
+transition:
+color .15s linear,
+background-color .15s linear;
+}
+
+.defaultbtn:active, .button:active, .btn:active, .defaultbtn:active, #searchsubmit:active, #submit:active, .submit:active, .post-edit-link:active, .more-link:active, input[type="submit"]:active {
+-webkit-transition: none;
+transition: none;
+}
+
+
+/*** Button Color Classes ***/
+
+.orange {
+background-color: #bd6208;
+color: #ffffff;
+text-decoration: none;
+vertical-align: middle;
+}
+
+.orange:hover {
+background-color: #d27315;
+color: #fafafa;
+}
+
+.orange:active {
+background: #9d5106;
+color: #edd1b6;
+}
+
+.black {
+background-color: #000;
+color: #ffffff;
+text-decoration: none;
+vertical-align: middle;
+}
+
+.black:hover {
+background-color: #333;
+}
+
+.black:active {
+background: #000;
+color: #ccc;
+}
+
+.gray {
+background-color: #777;
+border: 1px solid #444;
+color: #ffffff;
+text-decoration: none;
+vertical-align: middle;
+}
+
+.gray:hover {
+background-color: #999;
+}
+
+.gray:active {
+background: #777;
+color: #ccc;
+}
+
+.white {
+background-color: #fff;
+border: 1px solid #ccc;
+color: #333333 !important;
+text-decoration: none;
+vertical-align: middle;
+}
+
+.white:hover {
+background-color: #fafafa;
+color: #333333 !important;
+}
+
+.white:active {
+background: #ededed;
+color: #000 !important;
+}
+
+.red {
+background-color: #cc0000;
+border: 1px solid #990000;
+color: #ffffff;
+text-decoration: none;
+vertical-align: middle;
+}
+
+.red:hover {
+background-color: #b61818;
+}
+
+.red:active {
+background: #840202;
+color: #e5b5b5;
+}
+
+.blue {
+background-color: #0095cd;
+border: 1px solid #006699;
+color: #d9eef7;
+text-decoration: none;
+vertical-align: middle;
+}
+
+.blue:hover {
+background-color: #007ead;
+}
+.blue:active {
+background: #0078a5;
+color: #80bed6;
+}
+
+.green {
+background-color: #64991e;
+border: 1px solid #64991e;
+color: #e8f0de;
+text-decoration: none;
+vertical-align: middle;
+}
+
+.green:hover {
+background-color: #538018;
+}
+
+.green:active {
+background: #4e7d0e;
+color: #a9c08c;
+}
+
+.yellow {
+background-color: #bca509;
+border: 1px solid #bca509;
+color: #ffffff;
+text-decoration: none;
+vertical-align: middle;
+}
+
+.yellow:hover {
+background-color: #cab313;
+}
+
+.yellow:active {
+background: #bca509;
+color: #dcd4a0;
+}
+
+/*** Box Color Classes ***/
+
+
+.defaultbox {
+background-color: #fafafa;
+}
+
+.greenbox {
+background-color: #e6f8ed;
+}
+
+.bluebox {
+background: #ecf3fb;
+}
+
+.redbox {
+background: #fde2e3;
+}
+
+.yellowbox {
+background: #fcfadd;
+}
+
+/* Non-semantic helper classes
+-------------------------------------------------------------- */
+
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.hidden { display: none; visibility: hidden; }
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+.invisible { visibility: hidden; }
+/* Clearfix hack */
+.cf:before,
+.cf:after {
+content:"";
+display:table;
+}
+
+.cf:after {
+clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+zoom:1;
+}

@@ -1,0 +1,8 @@
+== Facade Changelog ==
+
+Facade created by David Gwyer, and Scott Bolinger
+Website: http://www.presscoders.com
+
+*1.0*
+
+* Initial release.
