@@ -1,8 +1,8 @@
 <?php
 include "../../../wp-config.php";
 
-if(!class_exists('SinaOAuth')){
-	include dirname(__FILE__).'/sinaOAuth.php';
+if(!class_exists('TYOAuth')){
+	include dirname(__FILE__).'/TYOAuth.php';
 }
 //var_dump ('dd');
 $to = new SinaOAuth($sina_consumer_key, $sina_consumer_secret);

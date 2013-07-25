@@ -47,10 +47,10 @@ function ty_connect($id='',$callback_url=''){
 		return;
 	}
 	$ty_url = WP_PLUGIN_URL.'/'.dirname(plugin_basename (__FILE__));
-	 if(!class_exists('SinaOAuth')){
-                include dirname(__FILE__).'/sinaOAuth.php';
+	 if(!class_exists('TYOAuth')){
+                include dirname(__FILE__).'/TYOAuth.php';
         }
-	$o = new SinaOAuth( $sina_consumer_key, $sina_consumer_secret);
+	$o = new TYOAuth( $sina_consumer_key, $sina_consumer_secret);
 
 	$code_url = $o->getAuthorizeURL( WB_CALLBACK_URL );	
 ?>
@@ -96,10 +96,10 @@ $out = 'http://tp3.sinaimg.cn/'.$scid.'/50/1.jpg';
 function ty_confirm(){
     global $sina_consumer_key, $sina_consumer_secret;
 	
-	if(!class_exists('SinaOAuth')){
-		include dirname(__FILE__).'/sinaOAuth.php';
+	if(!class_exists('TYOAuth')){
+		include dirname(__FILE__).'/TYOAuth.php';
 	}
-$to = new SinaOAuth($sina_consumer_key, $sina_consumer_secret);
+$to = new TYOAuth($sina_consumer_key, $sina_consumer_secret);
 if (isset($_GET['code'])) {
 //var_dump ($_REQUEST['code'], 'zjh');
 $keys = array();
@@ -226,11 +226,11 @@ function ty_comment_post($id){
 	$scdata = get_user_meta($current_comment->user_id, 'scdata',true);
 	if($scdata){
 		if($_POST['post_2_ty_t']){
-			if(!class_exists('SinaOAuth')){
-				include dirname(__FILE__).'/sinaOAuth.php';
+			if(!class_exists('TYOAuth')){
+				include dirname(__FILE__).'/TYOAuth.php';
 			}
 			global $sina_consumer_key, $sina_consumer_secret;
-			$to = new SinaOAuth($sina_consumer_key, $sina_consumer_secret,$scdata['oauth_access_token'], $scdata['oauth_access_token_secret']);
+			$to = new TYOAuth($sina_consumer_key, $sina_consumer_secret,$scdata['oauth_access_token'], $scdata['oauth_access_token_secret']);
 			$status = urlencode($current_comment->comment_content. ' '.get_permalink($comment_post_id)."#comment-".$id);			
 			$resp = $to->OAuthRequest('http://api.t.sina.com.cn/statuses/update.xml','POST',array('status'=>$status));		
 		}
