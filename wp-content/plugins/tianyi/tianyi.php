@@ -9,28 +9,28 @@ Version: 2.3.2
 */
 $sina_consumer_key = '397388240000032128';
 $sina_consumer_secret = 'ac58c160d3536593d31a4a72bf0dc94a';
-$sc_loaded = false;
+$ty_loaded = false;
 define(WB_CALLBACK_URL ,  WP_PLUGIN_URL.'/'.dirname(plugin_basename (__FILE__)).'/sina-start.php');
-add_action('init', 'sc_init');
-function sc_init(){
+add_action('init', 'ty_init');
+function ty_init(){
 	if (session_id() == "") {
 		session_start();
 	}
 	if(!is_user_logged_in()) {		
         if(isset($_GET['code'])){
-			sc_confirm();
+			ty_confirm();
         } 
     } 
 }
 
-add_action("wp_head", "sc_wp_head");
-add_action("admin_head", "sc_wp_head");
-add_action("login_head", "sc_wp_head");
-add_action("admin_head", "sc_wp_head");
-function sc_wp_head(){
+add_action("wp_head", "ty_wp_head");
+add_action("admin_head", "ty_wp_head");
+add_action("login_head", "ty_wp_head");
+add_action("admin_head", "ty_wp_head");
+function ty_wp_head(){
     if(is_user_logged_in()) {
         if(isset($_GET['oauth_token'])){
-			echo '<script type="text/javascript">window.opener.sc_reload("");window.close();</script>';
+			echo '<script type="text/javascript">window.opener.ty_reload("");window.close();</script>';
         }
 	}
 }
@@ -39,14 +39,14 @@ add_action('comment_form', 'sina_connect');
 add_action("login_form", "sina_connect");
 add_action("register_form", "sina_connect",12);
 function sina_connect($id='',$callback_url=''){
-	global $sc_loaded, $sina_consumer_key, $sina_consumer_secret;
-	if($sc_loaded) {
+	global $ty_loaded, $sina_consumer_key, $sina_consumer_secret;
+	if($ty_loaded) {
 		return;
 	}
 	if(is_user_logged_in() && !is_admin()){
 		return;
 	}
-	$sc_url = WP_PLUGIN_URL.'/'.dirname(plugin_basename (__FILE__));
+	$ty_url = WP_PLUGIN_URL.'/'.dirname(plugin_basename (__FILE__));
 	 if(!class_exists('SinaOAuth')){
                 include dirname(__FILE__).'/sinaOAuth.php';
         }
@@ -55,27 +55,27 @@ function sina_connect($id='',$callback_url=''){
 	$code_url = $o->getAuthorizeURL( WB_CALLBACK_URL );	
 ?>
 	<script type="text/javascript">
-    function sc_reload(){
+    function ty_reload(){
        var url=location.href;
        var temp = url.split("#");
        url = temp[0];
-       url += "#sc_button";
+       url += "#ty_button";
        location.href = url;
        location.reload();
     }
     </script>	
 	<style type="text/css"> 
-	.sc_button img{ border:none;}
+	.ty_button img{ border:none;}
     </style>
-	<p id="sc_connect" class="sc_button">
-	<img onclick='window.open("<?php echo $code_url; ?>", "dcWindow","width=800,height=600,left=150,top=100,scrollbar=no,resize=no");return false;' src="<?php echo $sc_url; ?>/sina_button.png" alt="使用新浪微博登陆" style="cursor: pointer; margin-right: 20px;" />
+	<p id="ty_connect" class="ty_button">
+	<img onclick='window.open("<?php echo $code_url; ?>", "dcWindow","width=800,height=600,left=150,top=100,scrollbar=no,resize=no");return false;' src="<?php echo $ty_url; ?>/sina_button.png" alt="使用新浪微博登陆" style="cursor: pointer; margin-right: 20px;" />
 	</p>
 <?php
-    $sc_loaded = true;
+    $ty_loaded = true;
 }
 
-add_filter("get_avatar", "sc_get_avatar",10,4);
-function sc_get_avatar($avatar, $id_or_email='',$size='32') {
+add_filter("get_avatar", "ty_get_avatar",10,4);
+function ty_get_avatar($avatar, $id_or_email='',$size='32') {
 	global $comment;
 	if(is_object($comment)) {
 		$id_or_email = $comment->user_id;
@@ -93,7 +93,7 @@ $out = 'http://tp3.sinaimg.cn/'.$scid.'/50/1.jpg';
 	}
 }
 
-function sc_confirm(){
+function ty_confirm(){
     global $sina_consumer_key, $sina_consumer_secret;
 	
 	if(!class_exists('SinaOAuth')){
@@ -126,15 +126,15 @@ $user_message = $c->show_user_by_id( $uid);
 var_dump ($user_message);
 //exit ();
 	if($user_message['domain']){
-		$sc_user_name = $user_message['domain'];
+		$ty_user_name = $user_message['domain'];
 	} else {
-		$sc_user_name = $user_message['id'];
+		$ty_user_name = $user_message['id'];
 	}
 		
-	sc_login($user_message['domain'].'|'.$sc_user_name.'|'.$user_message['screen_name'].'|'.$user_message['url'].'|'. $_SESSION['token']['access_token'] .'|'. ''); 
+	ty_login($user_message['domain'].'|'.$ty_user_name.'|'.$user_message['screen_name'].'|'.$user_message['url'].'|'. $_SESSION['token']['access_token'] .'|'. ''); 
 }
 
-function sc_login($Userinfo) {
+function ty_login($Userinfo) {
 	$userinfo = explode('|',$Userinfo);
 	if(count($userinfo) < 6) {
 		wp_die("An error occurred while trying to contact Sina Connect.");
@@ -161,20 +161,20 @@ function sc_login($Userinfo) {
 		
 			if($wpuid){
 				update_user_meta($wpuid, 'scid', $userinfo[0]);
-				$sc_array = array (
+				$ty_array = array (
 					"oauth_access_token" => $userinfo[4],
 					"oauth_access_token_secret" => $userinfo[5],
 				);
-				update_user_meta($wpuid, 'scdata', $sc_array);
+				update_user_meta($wpuid, 'scdata', $ty_array);
 			}
 		}
 	} else {
 		update_user_meta($wpuid, 'scid', $userinfo[0]);
-		$sc_array = array (
+		$ty_array = array (
 			"oauth_access_token" => $userinfo[4],
 			"oauth_access_token_secret" => $userinfo[5],
 		);
-		update_user_meta($wpuid, 'scdata', $sc_array);
+		update_user_meta($wpuid, 'scdata', $ty_array);
 	}
   
 	if($wpuid) {
@@ -183,7 +183,7 @@ function sc_login($Userinfo) {
 	}
 }
 
-function sc_sinauser_to_wpuser($scid) {
+function ty_sinauser_to_wpuser($scid) {
   return get_user_by_meta('scid', $scid);
 }
 
@@ -214,8 +214,8 @@ if(!function_exists('connect_login_form_login')){
 	}
 }
 
-add_action('comment_post', 'sc_comment_post',1000);
-function sc_comment_post($id){
+add_action('comment_post', 'ty_comment_post',1000);
+function ty_comment_post($id){
 	$comment_post_id = $_POST['comment_post_ID'];
 	
 	if(!$comment_post_id){
@@ -237,13 +237,13 @@ function sc_comment_post($id){
 	}
 }
 
-add_action('admin_menu', 'sc_options_add_page');
+add_action('admin_menu', 'ty_options_add_page');
 
-function sc_options_add_page() {
-	add_options_page('同步到新浪微博', '同步到新浪微博', 'manage_options', 'sc_options', 'sc_options_do_page');
+function ty_options_add_page() {
+	add_options_page('同步到新浪微博', '同步到新浪微博', 'manage_options', 'ty_options', 'ty_options_do_page');
 }
 
-function sc_options_do_page() {
+function ty_options_do_page() {
 	if($_GET['delete']) {
 		delete_option('sina_access_token');
 	}elseif(isset($_GET['oauth_token'])){
@@ -264,7 +264,7 @@ function sc_options_do_page() {
 		<form method="post" action="options.php">
             <?php
 			if($_GET['delete']){
-				 echo '<p>你已经删除了原来绑定的新浪微博帐号了。<a href="'.menu_page_url('sc_options',false).'">重新绑定或者绑定其他帐号？</a></p>';
+				 echo '<p>你已经删除了原来绑定的新浪微博帐号了。<a href="'.menu_page_url('ty_options',false).'">重新绑定或者绑定其他帐号？</a></p>';
 			} else {
 				if($tok = get_option('sina_access_token')){
 					
@@ -280,14 +280,14 @@ function sc_options_do_page() {
 					$sinaInfo = simplexml_load_string($sinaInfo);
 
 					if((string)$sinaInfo->domain){
-						$sc_user_name = $sinaInfo->domain;
+						$ty_user_name = $sinaInfo->domain;
 					} else {
-						$sc_user_name = $sinaInfo->id;
+						$ty_user_name = $sinaInfo->id;
 					}
-					echo '<p>你已经绑定了新浪微博帐号 <a href="http://weibo.com/'.$sc_user_name.'">'.$sinaInfo->screen_name.'</a> 了。<a href="'.menu_page_url('sc_options',false).'&delete=1">删除绑定或者绑定其他帐号？</a></p>';
+					echo '<p>你已经绑定了新浪微博帐号 <a href="http://weibo.com/'.$ty_user_name.'">'.$sinaInfo->screen_name.'</a> 了。<a href="'.menu_page_url('ty_options',false).'&delete=1">删除绑定或者绑定其他帐号？</a></p>';
 				}else{
 					echo '<p>点击下面的图标，将你的新浪微博客帐号和你的博客绑定，当你的博客更新的时候，会同时更新到新浪微博。</p>';
-					sina_connect('',menu_page_url('sc_options',false));
+					sina_connect('',menu_page_url('ty_options',false));
 				}
 			}
 			?>
