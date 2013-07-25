@@ -5,12 +5,6 @@
  * @author Elmer Zhang <freeboy6716@gmail.com>
  */
 
-/**
- * @ignore
- */
-class OAuthException extends Exception {
-	// pass
-}
 
 
 /**
