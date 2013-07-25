@@ -34,5 +34,5 @@ if($_GET['callback_url']){
 }
 
 
-header('Location:'.$callback_url);
+//header('Location:'.$callback_url);
 ?>
