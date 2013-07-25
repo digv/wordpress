@@ -35,10 +35,10 @@ function ty_wp_head(){
 	}
 }
 
-add_action('comment_form', 'sina_connect');
-add_action("login_form", "sina_connect");
-add_action("register_form", "sina_connect",12);
-function sina_connect($id='',$callback_url=''){
+add_action('comment_form', 'ty_connect');
+add_action("login_form", "ty_connect");
+add_action("register_form", "ty_connect",12);
+function ty_connect($id='',$callback_url=''){
 	global $ty_loaded, $sina_consumer_key, $sina_consumer_secret;
 	if($ty_loaded) {
 		return;
@@ -287,7 +287,7 @@ function ty_options_do_page() {
 					echo '<p>你已经绑定了新浪微博帐号 <a href="http://weibo.com/'.$ty_user_name.'">'.$sinaInfo->screen_name.'</a> 了。<a href="'.menu_page_url('ty_options',false).'&delete=1">删除绑定或者绑定其他帐号？</a></p>';
 				}else{
 					echo '<p>点击下面的图标，将你的新浪微博客帐号和你的博客绑定，当你的博客更新的时候，会同时更新到新浪微博。</p>';
-					sina_connect('',menu_page_url('ty_options',false));
+					ty_connect('',menu_page_url('ty_options',false));
 				}
 			}
 			?>
