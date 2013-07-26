@@ -117,22 +117,18 @@ if ($token) {
         setcookie( 'ty_'.$to->app_id, http_build_query($token) );
 }
 
-	$c = new TYClientV2(  $ty_consumer_key, $ty_consumer_secret , $_SESSION['token']['access_token'] );
-var_dump ($_SESSION['tytoken']);	
+	//$c = new TYClientV2(  $ty_consumer_key, $ty_consumer_secret , $_SESSION['token']['access_token'] );
+//var_dump ($_SESSION['tytoken']);	
 //var_dump (date('Y-m-d h:i:s', $_SESSION['token']['access_token']['expires_in']));
-exit();
-	$uid_get = $c->get_uid();
-$uid = $uid_get['uid'];
-$user_message = $c->show_user_by_id( $uid);
-var_dump ($user_message);
+
+	//$uid_get = $c->get_uid();
+//$uid = $uid_get['uid'];
+//$user_message = $c->show_user_by_id( $uid);
+//var_dump ($user_message);
 //exit ();
-	if($user_message['domain']){
-		$ty_user_name = $user_message['domain'];
-	} else {
-		$ty_user_name = $user_message['id'];
-	}
+	$ty_user_name = $_SESSION['tytoken']['open_id'];
 		
-	ty_login($user_message['domain'].'|'.$ty_user_name.'|'.$user_message['screen_name'].'|'.$user_message['url'].'|'. $_SESSION['token']['access_token'] .'|'. ''); 
+	ty_login($_SESSION['tytoken']['open_id'].'|'.$ty_user_name.'|'.$_SESSION['tytoken']['open_id'].'|'.''.'|'. $_SESSION['tytoken']['access_token'] .'|'. ''); 
 }
 
 function ty_login($Userinfo) {
