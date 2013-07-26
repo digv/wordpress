@@ -10,8 +10,7 @@ Version: 2.3.2
 $ty_consumer_key = '397388240000032128';
 $ty_consumer_secret = 'ac58c160d3536593d31a4a72bf0dc94a';
 $ty_loaded = false;
-define(TY_CALLBACK_URL ,  WP_PLUGIN_URL.'/'.'tianyi/sina-start.php');
-echo __FILE__ . 'zjh';
+define(TY_CALLBACK_URL ,  WP_PLUGIN_URL.'/'.dirname(plugin_basename (__FILE__)). '/sina-start.php');
 add_action('init', 'ty_init');
 function ty_init(){
 	if (session_id() == "") {
