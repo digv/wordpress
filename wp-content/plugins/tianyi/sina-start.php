@@ -24,7 +24,7 @@ $keys = array();
 
 if ($token) {
 	$_SESSION['token'] = $token;
-	setcookie( 'weibojs_'.$o->client_id, http_build_query($token) );
+	setcookie( 'tianyi_'.$o->app_id, http_build_query($token) );
 }
 //var_dump($token, 'zjh2');
 if($_GET['callback_url']){
