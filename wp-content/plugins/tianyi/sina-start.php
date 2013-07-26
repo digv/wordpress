@@ -5,7 +5,7 @@ if(!class_exists('TYOAuth')){
 	include dirname(__FILE__).'/TYOAuth.php';
 }
 //var_dump ('dd');
-$to = new SinaOAuth($sina_consumer_key, $sina_consumer_secret);
+$to = new SinaOAuth($ty_consumer_key, $ty_consumer_secret);
 
 	
 
@@ -14,7 +14,7 @@ if (isset($_GET['code'])) {
 //var_dump ($_REQUEST['code'], 'zjh');
 $keys = array();
 	$keys['code'] = $_REQUEST['code'];
-	$keys['redirect_uri'] = WB_CALLBACK_URL;
+	$keys['redirect_uri'] = TY_CALLBACK_URL;
 	try {
 		$token = $to->getAccessToken( 'code', $keys ) ;
 	} catch (OAuthException $e) {

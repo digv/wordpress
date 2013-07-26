@@ -7,10 +7,10 @@ Plugin URI: http://fairyfish.net/2010/06/08/sina-connect/
 Description: 使用新浪微博瓣账号登陆你的 WordPress 博客，并且留言使用新浪微博的头像，博主可以同步日志到新浪微博，用户可以同步留言到新浪微博。
 Version: 2.3.2
 */
-$sina_consumer_key = '397388240000032128';
-$sina_consumer_secret = 'ac58c160d3536593d31a4a72bf0dc94a';
+$ty_consumer_key = '397388240000032128';
+$ty_consumer_secret = 'ac58c160d3536593d31a4a72bf0dc94a';
 $ty_loaded = false;
-define(WB_CALLBACK_URL ,  WP_PLUGIN_URL.'/'.'tianyi/sina-start.php');
+define(TY_CALLBACK_URL ,  WP_PLUGIN_URL.'/'.'tianyi/sina-start.php');
 echo __FILE__ . 'zjh';
 add_action('init', 'ty_init');
 function ty_init(){
@@ -40,7 +40,7 @@ add_action('comment_form', 'ty_connect');
 add_action("login_form", "ty_connect");
 add_action("register_form", "ty_connect",12);
 function ty_connect($id='',$callback_url=''){
-	global $ty_loaded, $sina_consumer_key, $sina_consumer_secret;
+	global $ty_loaded, $ty_consumer_key, $ty_consumer_secret;
 	if($ty_loaded) {
 		return;
 	}
@@ -51,9 +51,9 @@ function ty_connect($id='',$callback_url=''){
 	 if(!class_exists('TYOAuth')){
                 include dirname(__FILE__).'/TYOAuth.php';
         }
-	$o = new TYOAuth( $sina_consumer_key, $sina_consumer_secret);
+	$o = new TYOAuth( $ty_consumer_key, $ty_consumer_secret);
 
-	$code_url = $o->getAuthorizeURL( WB_CALLBACK_URL );	
+	$code_url = $o->getAuthorizeURL( TY_CALLBACK_URL );	
 ?>
 	<script type="text/javascript">
     function ty_reload(){
@@ -95,17 +95,17 @@ $out = 'http://tp3.sinaimg.cn/'.$scid.'/50/1.jpg';
 }
 
 function ty_confirm(){
-    global $sina_consumer_key, $sina_consumer_secret;
+    global $ty_consumer_key, $ty_consumer_secret;
 	
 	if(!class_exists('TYOAuth')){
 		include dirname(__FILE__).'/TYOAuth.php';
 	}
-$to = new TYOAuth($sina_consumer_key, $sina_consumer_secret);
+$to = new TYOAuth($ty_consumer_key, $ty_consumer_secret);
 if (isset($_GET['code'])) {
 //var_dump ($_REQUEST['code'], 'zjh');
 $keys = array();
         $keys['code'] = $_REQUEST['code'];
-        $keys['redirect_uri'] = WB_CALLBACK_URL;
+        $keys['redirect_uri'] = TY_CALLBACK_URL;
         try {
                 $token = $to->getAccessToken( 'code', $keys ) ;
         } catch (OAuthException $e) {
@@ -118,7 +118,7 @@ if ($token) {
         setcookie( 'weibojs_'.$to->app_id, http_build_query($token) );
 }
 
-	$c = new TYClientV2(  $sina_consumer_key, $sina_consumer_secret , $_SESSION['token']['access_token'] );
+	$c = new TYClientV2(  $ty_consumer_key, $ty_consumer_secret , $_SESSION['token']['access_token'] );
 //var_dump ($_SESSION['token']);	
 //var_dump (date('Y-m-d h:i:s', $_SESSION['token']['access_token']['expires_in']));
 	$uid_get = $c->get_uid();
@@ -230,8 +230,8 @@ function ty_comment_post($id){
 			if(!class_exists('TYOAuth')){
 				include dirname(__FILE__).'/TYOAuth.php';
 			}
-			global $sina_consumer_key, $sina_consumer_secret;
-			$to = new TYOAuth($sina_consumer_key, $sina_consumer_secret,$scdata['oauth_access_token'], $scdata['oauth_access_token_secret']);
+			global $ty_consumer_key, $ty_consumer_secret;
+			$to = new TYOAuth($ty_consumer_key, $ty_consumer_secret,$scdata['oauth_access_token'], $scdata['oauth_access_token_secret']);
 			$status = urlencode($current_comment->comment_content. ' '.get_permalink($comment_post_id)."#comment-".$id);			
 			$resp = $to->OAuthRequest('http://api.t.sina.com.cn/statuses/update.xml','POST',array('status'=>$status));		
 		}
@@ -248,13 +248,13 @@ function ty_options_do_page() {
 	if($_GET['delete']) {
 		delete_option('sina_access_token');
 	}elseif(isset($_GET['oauth_token'])){
-		global $sina_consumer_key, $sina_consumer_secret;
+		global $ty_consumer_key, $ty_consumer_secret;
 	
 		if(!class_exists('SinaOAuth')){
 			include dirname(__FILE__).'/sinaOAuth.php';
 		}
 		
-		$to = new SinaOAuth($sina_consumer_key, $sina_consumer_secret, $_GET['oauth_token'],$_SESSION['sina_oauth_token_secret']);
+		$to = new SinaOAuth($ty_consumer_key, $ty_consumer_secret, $_GET['oauth_token'],$_SESSION['sina_oauth_token_secret']);
 		
 		$tok = $to->getAccessToken($_REQUEST['oauth_verifier']);
 		update_option('sina_access_token',$tok);
@@ -273,9 +273,9 @@ function ty_options_do_page() {
 						include dirname(__FILE__).'/sinaOAuth.php';
 					}
 					
-					global $sina_consumer_key, $sina_consumer_secret;
+					global $ty_consumer_key, $ty_consumer_secret;
 					
-					$to = new SinaOAuth($sina_consumer_key, $sina_consumer_secret, $tok['oauth_token'], $tok['oauth_token_secret']);
+					$to = new SinaOAuth($ty_consumer_key, $ty_consumer_secret, $tok['oauth_token'], $tok['oauth_token_secret']);
 					
 					$sinaInfo = $to->OAuthRequest('http://api.t.sina.com.cn/account/verify_credentials.xml', 'GET',array());
 					$sinaInfo = simplexml_load_string($sinaInfo);
@@ -301,8 +301,8 @@ function update_ty_t($status=null){
 	if(!class_exists('SinaOAuth')){
 		include dirname(__FILE__).'/sinaOAuth.php';
 	}
-	global $sina_consumer_key, $sina_consumer_secret;
-	$to = new SinaOAuth($sina_consumer_key, $sina_consumer_secret,$tok['oauth_token'], $tok['oauth_token_secret']);
+	global $ty_consumer_key, $ty_consumer_secret;
+	$to = new SinaOAuth($ty_consumer_key, $ty_consumer_secret,$tok['oauth_token'], $tok['oauth_token_secret']);
 	$status = urlencode($status);
 	$resp = $to->OAuthRequest('http://api.t.sina.com.cn/statuses/update.xml','POST',array('status'=>$status));
 }
@@ -313,8 +313,8 @@ function upload_ty_t($status,$pic){
 	if(!class_exists('SinaOAuth')){
 		include dirname(__FILE__).'/sinaOAuth.php';
 	}
-	global $sina_consumer_key, $sina_consumer_secret;
-	$to = new SinaOAuth($sina_consumer_key, $sina_consumer_secret,$tok['oauth_token'], $tok['oauth_token_secret']);
+	global $ty_consumer_key, $ty_consumer_secret;
+	$to = new SinaOAuth($ty_consumer_key, $ty_consumer_secret,$tok['oauth_token'], $tok['oauth_token_secret']);
 
 	$status = urlencode($status);
 	
