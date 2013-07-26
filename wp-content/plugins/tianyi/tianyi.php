@@ -68,7 +68,7 @@ function ty_connect($id='',$callback_url=''){
 	.ty_button img{ border:none;}
     </style>
 	<p id="ty_connect" class="ty_button">
-	<img onclick='window.open("<?php echo $code_url; ?>", "dcWindow","width=800,height=600,left=150,top=100,scrollbar=no,resize=no");return false;' src="<?php echo $ty_url; ?>/sina_button.png" alt="使用新浪微博登陆" style="cursor: pointer; margin-right: 20px;" />
+	<img onclick='window.open("<?php echo $code_url; ?>", "dcWindow","width=800,height=600,left=150,top=100,scrollbar=no,resize=no");return false;' src="<?php echo $ty_url; ?>/ty.jpg" alt="使用天翼账户登陆" style="cursor: pointer; margin-right: 20px;" />
 	</p>
 <?php
     $ty_loaded = true;
