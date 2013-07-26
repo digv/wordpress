@@ -117,18 +117,9 @@ if ($token) {
         setcookie( 'ty_'.$to->app_id, http_build_query($token) );
 }
 
-	//$c = new TYClientV2(  $ty_consumer_key, $ty_consumer_secret , $_SESSION['token']['access_token'] );
-//var_dump ($_SESSION['tytoken']);	
-//var_dump (date('Y-m-d h:i:s', $_SESSION['token']['access_token']['expires_in']));
-
-	//$uid_get = $c->get_uid();
-//$uid = $uid_get['uid'];
-//$user_message = $c->show_user_by_id( $uid);
-//var_dump ($user_message);
-//exit ();
 	$ty_user_name = $_SESSION['tytoken']['open_id'];
 		
-	ty_login($_SESSION['tytoken']['open_id'].'|'.$ty_user_name.'|'.$_SESSION['tytoken']['open_id'].'|'.''.'|'. $_SESSION['tytoken']['access_token'] .'|'. ''); 
+	ty_login($_SESSION['tytoken']['open_id'].'|'.$ty_user_name.'|'.'天翼用户_'.$_SESSION['tytoken']['open_id'].'|'.''.'|'. $_SESSION['tytoken']['access_token'] .'|'. ''); 
 }
 
 function ty_login($Userinfo) {
@@ -139,7 +130,7 @@ function ty_login($Userinfo) {
 
 	$userdata = array(
 		'user_pass' => wp_generate_password(),
-		'user_login' => 'weibo_'. $userinfo[1],
+		'user_login' => 'tianyi_'. $userinfo[1],
 		'display_name' => $userinfo[2],
 		'user_url' => $userinfo[3],
 		'user_email' => $userinfo[1].'@weibo.com'

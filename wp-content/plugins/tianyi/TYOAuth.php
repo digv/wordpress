@@ -50,7 +50,7 @@ class TYOAuth {
 	 *
 	 * @ignore
 	 */
-	public $host = "https://api.weibo.com/2/";
+	//public $host = "https://api.weibo.com/2/";
 	/**
 	 * Set timeout default.
 	 *
