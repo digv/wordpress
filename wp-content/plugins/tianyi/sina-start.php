@@ -5,7 +5,7 @@ if(!class_exists('TYOAuth')){
 	include dirname(__FILE__).'/TYOAuth.php';
 }
 //var_dump ('dd');
-$to = new SinaOAuth($ty_consumer_key, $ty_consumer_secret);
+$to = new TYOAuth($ty_consumer_key, $ty_consumer_secret);
 
 	
 
