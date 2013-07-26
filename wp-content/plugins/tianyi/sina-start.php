@@ -32,7 +32,7 @@ if($_GET['callback_url']){
 }else{
 	$callback_url = get_option('home');
 }
-
+exit();
 
 //header('Location:'.$callback_url);
 ?>
