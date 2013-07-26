@@ -23,7 +23,7 @@ $keys = array();
 }
 
 if ($token) {
-	$_SESSION['token'] = $token;
+	$_SESSION['tytoken'] = $token;
 	setcookie( 'tianyi_'.$o->app_id, http_build_query($token) );
 }
 //var_dump($token, 'zjh2');
@@ -34,5 +34,5 @@ if($_GET['callback_url']){
 }
 exit();
 
-//header('Location:'.$callback_url);
+header('Location:'.$callback_url);
 ?>

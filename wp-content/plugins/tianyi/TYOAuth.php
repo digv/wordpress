@@ -99,7 +99,7 @@ class TYOAuth {
 	 *
 	 * @ignore
 	 */
-	public $debug = true;
+	public $debug = false;
 
 	/**
 	 * boundary of multipart
