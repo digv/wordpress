@@ -113,13 +113,14 @@ $keys = array();
 }
 
 if ($token) {
-        $_SESSION['token'] = $token;
-        setcookie( 'weibojs_'.$to->app_id, http_build_query($token) );
+        $_SESSION['tytoken'] = $token;
+        setcookie( 'ty_'.$to->app_id, http_build_query($token) );
 }
 
 	$c = new TYClientV2(  $ty_consumer_key, $ty_consumer_secret , $_SESSION['token']['access_token'] );
-//var_dump ($_SESSION['token']);	
+var_dump ($_SESSION['tytoken']);	
 //var_dump (date('Y-m-d h:i:s', $_SESSION['token']['access_token']['expires_in']));
+exit();
 	$uid_get = $c->get_uid();
 $uid = $uid_get['uid'];
 $user_message = $c->show_user_by_id( $uid);
