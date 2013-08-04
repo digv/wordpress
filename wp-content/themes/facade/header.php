@@ -93,4 +93,9 @@
 
 		 </header>
 
+		<?php 
+			if (function_exists('ty_weather_report')) {
+				ty_weather_report ();
+			}
+		?>
 	</div><!-- #header-container -->
