@@ -21,8 +21,9 @@ add_action('ty_weather_report', 'cus_weather');
 
 function cus_weather () {
 	
+	echo dirname (dirname (__FILE__));
 	if (!class_exists('TYOAuth')) {
-		include_once WP_PLUGIN_URL .'/tianyi/TYOAuth.php';
+		include_once dirname('../tianyi/TYOAuth.php');
 	}
 	
 	$ty = new TYOAuth($tw_consumer_key, $tw_consumer_secret);
