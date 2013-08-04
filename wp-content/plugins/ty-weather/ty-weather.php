@@ -20,7 +20,7 @@ function ty_weather_report () {
 add_action('ty_weather_report', 'cus_weather');
 
 function cus_weather () {
-	
+	global $tw_access_token, $tw_consumer_secret, $tw_consumer_key;
 	//echo dirname (dirname (__FILE__));
 	if (!class_exists('TYOAuth')) {
 		include_once dirname (dirname (__FILE__)). '/tianyi/TYOAuth.php';
