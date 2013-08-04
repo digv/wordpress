@@ -22,7 +22,7 @@ add_action('ty_weather_report', 'cus_weather');
 function cus_weather () {
 	
 	if (!class_exists('TYOAuth')) {
-		include_once '../tianyi/TYOAuth.php';
+		include_once WP_PLUGIN_URL .'/tianyi/TYOAuth.php';
 	}
 	
 	$ty = new TYOAuth($tw_consumer_key, $tw_consumer_secret);
