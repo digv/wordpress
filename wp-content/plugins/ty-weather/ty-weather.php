@@ -35,12 +35,12 @@ function cus_weather () {
 	if (count($nodes)) {
 		
 		foreach ($nodes as $node) {
-			$w = '<img style="height:30px;" src="'.WP_PLUGIN_URL . '/ty-weather/tylogo.gif' . '" />今日天气: ';
-			$w .= $node -> getAttribute ('DATE') .'上海天气： '. $node -> getAttribute ('WEA').', '. $node -> getAttribute ('WIND').', 最高温度:  '. $node -> getAttribute ('TMAX'). ', 最低温度:  '. $node -> getAttribute ('TMIN');
+			$w = '<img style="height:30px;" src="'.WP_PLUGIN_URL . '/ty-weather/tylogo.gif' . '" />今日上海天气: ';
+			$w .= $node -> getAttribute ('DATE') .', '. $node -> getAttribute ('WEA').', '. $node -> getAttribute ('WIND').', 最高温度:  '. $node -> getAttribute ('TMAX'). ', 最低温度:  '. $node -> getAttribute ('TMIN');
 		}
 	}
 	
-	echo '<div style="position:absolute;left:200px; width:70%";>';
+	echo '<div style="position:absolute;left:200px; width:70%";padding:5px 0 3px;>';
 	echo $w;
 	echo '</div>';
 	
