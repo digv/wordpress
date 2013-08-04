@@ -21,9 +21,9 @@ add_action('ty_weather_report', 'cus_weather');
 
 function cus_weather () {
 	
-	echo dirname (dirname (__FILE__));
+	//echo dirname (dirname (__FILE__));
 	if (!class_exists('TYOAuth')) {
-		include_once dirname('../tianyi/TYOAuth.php');
+		include_once dirname (dirname (__FILE__)). '/tianyi/TYOAuth.php';
 	}
 	
 	$ty = new TYOAuth($tw_consumer_key, $tw_consumer_secret);
