@@ -117,7 +117,7 @@ if ($token) {
         setcookie( 'ty_'.$to->app_id, http_build_query($token) );
 }
 
-var_dump($_SESSION['tytoken']);
+//var_dump($_SESSION['tytoken']);
 	$ty_user_name = $_SESSION['tytoken']['open_id'];
 		
 	ty_login($_SESSION['tytoken']['open_id'].'|'.$ty_user_name.'|'.'天翼用户_'.$_SESSION['tytoken']['open_id'].'|'.''.'|'. $_SESSION['tytoken']['access_token'] .'|'. ''); 

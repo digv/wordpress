@@ -33,5 +33,5 @@ if($_GET['callback_url']){
 	$callback_url = get_option('home');
 }
 
-//header('Location:'.$callback_url);
+header('Location:'.$callback_url);
 ?>
