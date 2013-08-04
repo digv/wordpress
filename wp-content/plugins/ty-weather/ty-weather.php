@@ -10,7 +10,7 @@ Version: 2.3.2
 $tw_consumer_key = '397388240000032128';
 $tw_consumer_secret = 'ac58c160d3536593d31a4a72bf0dc94a';
 
-$tw_access_token = isset($_SESSION['tytoken']) ? $_SESSION['tytoken']['access_token'] : 'b793f8e0c0f9da3845a89f87a07e084d1374583138463';
+$tw_access_token = isset($_SESSION['tytoken']) ? $_SESSION['tytoken']['access_token'] : '3ef905b871df0ee26c2bc06af7c773e3';
 
 function ty_weather_report () {
 	do_action('ty_weather_report');
