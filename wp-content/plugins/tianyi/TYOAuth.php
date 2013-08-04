@@ -118,6 +118,8 @@ class TYOAuth {
 	 * @ignore
 	 */
 	function authorizeURL()    { return 'https://oauth.api.189.cn/emp/oauth2/v2/authorize'; }
+	
+	function weatherURL () { return 'http://api.189.cn/huafeng/api/getforecast24'; }
 
 	/**
 	 * construct WeiboOAuth object
@@ -460,6 +462,13 @@ class TYOAuth {
 
 		$multipartbody .= $endMPboundary;
 		return $multipartbody;
+	}
+	
+	public function weatherReport ($city_id = '0101260102', $at) {
+		$params['app_id'] = $this->app_id;
+		$params['access_token'] = $at;
+		$params['city_id'] = $city_id;
+		return $this->oAuthRequest($this->weatherURL(), 'GET', $params);
 	}
 }
 
