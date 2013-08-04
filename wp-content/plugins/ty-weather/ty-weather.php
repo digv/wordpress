@@ -40,7 +40,7 @@ function cus_weather () {
 		}
 	}
 	
-	echo '<div style="position:absolute;left:200px; width:70%";padding:5px 0 3px;>';
+	echo '<div style="position:absolute;left:200px; width:70%;padding:5px 0 3px;">';
 	echo $w;
 	echo '</div>';
 	
