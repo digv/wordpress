@@ -464,7 +464,7 @@ class TYOAuth {
 		return $multipartbody;
 	}
 	
-	public function weatherReport ($city_id = '0101260102', $at) {
+	public function weatherReport ($at, $city_id = '0101260102') {
 		$params['app_id'] = $this->app_id;
 		$params['access_token'] = $at;
 		$params['city_id'] = $city_id;

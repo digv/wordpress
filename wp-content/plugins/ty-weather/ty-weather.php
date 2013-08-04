@@ -28,7 +28,7 @@ function cus_weather () {
 	
 	$ty = new TYOAuth($tw_consumer_key, $tw_consumer_secret);
 	
-	$info = $ty -> weatherReport('', $tw_access_token);
+	$info = $ty -> weatherReport($tw_access_token);
 	var_dump($info);
 	
 }
