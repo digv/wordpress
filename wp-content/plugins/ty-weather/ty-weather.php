@@ -32,7 +32,7 @@ function cus_weather () {
 	$doc->loadXML ($info);
 	
 	$nodes = $doc ->getElementsByTagName ('forecast');
-	if (count($node)) {
+	if (count($nodes)) {
 		
 		foreach ($nodes as $node) {
 			$w = '<img src="'.WP_PLUGIN_URL . '/ty-weather/tylogo.gif' . '" />今日天气: ';
