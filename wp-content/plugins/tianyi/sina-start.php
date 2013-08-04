@@ -26,12 +26,12 @@ if ($token) {
 	$_SESSION['tytoken'] = $token;
 	setcookie( 'tianyi_'.$o->app_id, http_build_query($token) );
 }
-//var_dump($token, 'zjh2');
+var_dump($token, 'zjh2');
 if($_GET['callback_url']){
 	$callback_url = $_GET['callback_url'];
 }else{
 	$callback_url = get_option('home');
 }
 
-header('Location:'.$callback_url);
+//header('Location:'.$callback_url);
 ?>
