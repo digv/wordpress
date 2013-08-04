@@ -11,7 +11,6 @@ $tw_consumer_key = '397388240000032128';
 $tw_consumer_secret = 'ac58c160d3536593d31a4a72bf0dc94a';
 
 $tw_access_token = isset($_SESSION['tytoken']) ? $_SESSION['tytoken']['access_token'] : '3cdaed895e096e0776d19de10bdf48ac1374754416322';
-
 function ty_weather_report () {
 	do_action('ty_weather_report');
 	
@@ -29,6 +28,20 @@ function cus_weather () {
 	$ty = new TYOAuth($tw_consumer_key, $tw_consumer_secret);
 	
 	$info = $ty -> weatherReport($tw_access_token);
-	var_dump($info);
+	$doc = new DOMDocument();
+	$doc->loadXML ($info);
+	
+	$nodes = $doc ->getElementsByTagName ('forecast');
+	if (count($node)) {
+		
+		foreach ($nodes as $node) {
+			$w = '<img src="'.WP_PLUGIN_URL . '/ty-weather/tylogo.gif' . '" />今日天气: ';
+			$w .= $node -> getAttribute ('DATE') .'上海天气： '. $node -> getAttribute ('WEA').', '. $node -> getAttribute ('WIND').', 最高温度:  '. $node -> getAttribute ('TMAX'). ', 最低温度:  '. $node -> getAttribute ('TMIN');
+		}
+	}
+	
+	echo '<div style="">';
+	echo $w;
+	echo '</div>';
 	
 }
