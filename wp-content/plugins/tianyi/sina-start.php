@@ -5,6 +5,7 @@ if(!class_exists('TYOAuth')){
 	include dirname(__FILE__).'/TYOAuth.php';
 }
 //var_dump ('dd');
+/*
 $to = new TYOAuth($ty_consumer_key, $ty_consumer_secret);
 
 	
@@ -27,6 +28,7 @@ if ($token) {
 	setcookie( 'tianyi_'.$o->app_id, http_build_query($token) );
 }
 //var_dump($token, 'zjh2');
+*/
 if($_GET['callback_url']){
 	$callback_url = $_GET['callback_url'];
 }else{

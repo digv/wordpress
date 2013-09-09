@@ -10,7 +10,7 @@ Version: 2.3.2
 $tw_consumer_key = '397388240000032128';
 $tw_consumer_secret = 'ac58c160d3536593d31a4a72bf0dc94a';
 
-$tw_access_token = isset($_SESSION['tytoken']) ? $_SESSION['tytoken']['access_token'] : '3cdaed895e096e0776d19de10bdf48ac1374754416322';
+$tw_access_token = isset($_SESSION['tytoken']) ? $_SESSION['tytoken']['access_token'] : '0bdf3b7072a32a2573fcbb55560ebea71377681338151';
 function ty_weather_report () {
 	do_action('ty_weather_report');
 	
@@ -40,7 +40,7 @@ function cus_weather () {
 		}
 	}
 	
-	echo '<div style="position:absolute;left:200px; width:70%;padding:5px 0 3px;">';
+	echo '<div style="position:relative; max-width:960px;top:35px;clear:both;margin:0 auto;">';
 	echo $w;
 	echo '</div>';
 	

@@ -15,3 +15,9 @@ define('WP_USE_THEMES', true);
 
 /** Loads the WordPress Environment and Template */
 require('./wp-blog-header.php');
+
+if(isset($_GET['sessBug'])) {
+
+	var_dump ($_SESSION);
+
+}
